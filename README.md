@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mocksy AI
 
-## Getting Started
+Mocksy is a modern AI-powered mock interview platform UI built with Next.js, React, and Tailwind CSS. It provides a polished, realistic interface for practicing job interviews, managing interview sessions, and visualizing tech stacks, with a dark-themed, responsive design.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Authentication UI
+  - Sign up and sign in flows
+  - Form validation using React Hook Form and Zod
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Interview Practice UI
+  - Interview cards showing role, type, date, and score placeholders
+  - Clear actions to start or review interviews
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Tech Stack Visualization
+  - Automatic tech logo resolution using Devicons CDN
+  - Intelligent fallback icons for unsupported technologies
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Modern UI / UX
+  - Dark-mode-first design
+  - Custom gradients, animations, and reusable components
+  - Fully responsive layouts
 
-## Learn More
+- Component-Based Architecture
+  - Reusable components such as AuthForm, InterviewCard, FormField, and DisplayTechIcons
+  - Clean separation between authentication routes and application routes
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Framework: Next.js (App Router)
+- Frontend: React, TypeScript
+- Styling: Tailwind CSS with custom design tokens
+- Forms: React Hook Form, Zod
+- UI Utilities: clsx, tailwind-merge
+- Notifications: Sonner
+- Date Handling: Day.js
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Current State
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- UI-focused implementation
+- Uses dummy interview data
+- AI interview logic and backend integration not implemented yet
+
+## Planned Enhancements
+
+- Real AI-powered interview sessions
+- Voice-based interviewing
+- Automated scoring and feedback
+- User dashboard with progress tracking
+- Backend authentication and data persistence
