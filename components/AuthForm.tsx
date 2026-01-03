@@ -7,12 +7,10 @@ import { toast } from "sonner"
 import FormField from "@/components/FormField"
 
 import { Button } from "@/components/ui/button"
-import {
-    Card,
-    CardFooter,
-} from "@/components/ui/card"
+import { Card, CardFooter } from "@/components/ui/card"
 import { Form } from "@/components/ui/form"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 /* -------------------- TYPES -------------------- */
 type FormType = "sign-in" | "sign-up"
@@ -27,6 +25,7 @@ const authFormSchema = (type: FormType) =>
 
 /* -------------------- COMPONENT -------------------- */
 export default function AuthForm({ type }: { type: FormType }) {
+    const router = useRouter() // ✅ correct
     const formSchema = authFormSchema(type)
     type FormValues = z.infer<typeof formSchema>
 
@@ -41,21 +40,22 @@ export default function AuthForm({ type }: { type: FormType }) {
 
     const isSignIn = type === "sign-in"
 
-    /* -------------------- SUBMIT HANDLER -------------------- */
     const onSubmit = async (values: FormValues) => {
         try {
             if (type === "sign-up") {
-                console.log("SIGN UP", values)
+                toast.success("Account Created Successfully. Please sign in.")
+                router.push("/sign-in")
             } else {
-                console.log("SIGN IN", values)
+                toast.success("Signed in Successfully.")
+                router.push("/")
             }
         } catch (error: unknown) {
-            console.log(error)
-            if (error instanceof Error) {
-                toast.error(`There was an error: ${error.message}`)
-            } else {
-                toast.error("There was an unknown error")
-            }
+            console.error(error)
+            toast.error(
+                error instanceof Error
+                    ? `There was an error: ${error.message}`
+                    : "There was an unknown error"
+            )
         }
     }
 
@@ -77,7 +77,7 @@ export default function AuthForm({ type }: { type: FormType }) {
                         {!isSignIn && (
                             <FormField
                                 control={form.control}
-                                name="Name"
+                                name="name"
                                 label="Name"
                                 placeholder="Your name"
                             />
